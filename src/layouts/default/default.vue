@@ -27,3 +27,14 @@
 import Sidebar from "./Sidebar.vue";
 import Content from "./Content.vue";
 </script>
+
+<style scoped>
+.n-menu-item-content-header p {
+  color: white;
+}
+
+.n-menu-item:hover .n-menu-item-content-header p {
+  color: black;
+  transition: 0.3s;
+}
+</style>

@@ -185,16 +185,7 @@ const menuOptions3: MenuOption[] = [
 .n-menu-item-content-header p {
   color: white;
 }
-/* .n-menu-item-content-header p:hover {
-  color: black;
-} */
-/* 
-.n-menu--vertical {
-  color: white;
-}
-.n-menu-item:hover {
-  color: black;
-} */
+
 .n-menu-item:hover .n-menu-item-content-header p {
   color: black;
 }
