@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div ref="main" style="width: 600px; height: 400px"></div>
+    <div ref="main" style="width: 250px; height: 80px"></div>
   </div>
 </template>
 
@@ -18,6 +18,8 @@ import { LineChart } from "echarts/charts";
 import { UniversalTransition } from "echarts/features";
 import { CanvasRenderer } from "echarts/renderers";
 
+const props = defineProps(["chartData"]);
+
 echarts.use([
   TitleComponent,
   ToolboxComponent,
@@ -34,9 +36,6 @@ const myChart = ref<echarts.ECharts | null>(null);
 
 const option = {
   color: ["#80FFA5", "#00DDFF", "#37A2FF", "#FF0087", "#FFBF00"],
-  title: {
-    text: "Gradient Stacked Area Chart",
-  },
   tooltip: {
     trigger: "axis",
     axisPointer: {
@@ -47,58 +46,91 @@ const option = {
     },
   },
   legend: {
-    data: ["Line 1", "Line 2", "Line 3", "Line 4", "Line 5"],
+    data: [""],
   },
   toolbox: {
-    feature: {
-      saveAsImage: {},
-    },
+    feature: {},
   },
   grid: {
-    left: "3%",
-    right: "4%",
-    bottom: "3%",
+    show: false, // Hide the grid
     containLabel: true,
   },
   xAxis: [
     {
       type: "category",
       boundaryGap: false,
-      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      axisLine: {
+        show: false, // Hide the x-axis line
+      },
+      axisTick: {
+        show: false, // Hide the x-axis ticks
+      },
+      splitLine: {
+        show: false, // Hide the x-axis grid lines
+      },
+      axisLabel: {
+        show: false, // Hide the x-axis labels
+      },
     },
   ],
+
   yAxis: [
     {
       type: "value",
+      axisLine: {
+        show: false, // Hide the y-axis line
+      },
+      axisTick: {
+        show: false, // Hide the y-axis ticks
+      },
+      splitLine: {
+        show: false, // Hide the y-axis grid lines
+      },
+      axisLabel: {
+        show: false, // Hide the y-axis labels
+      },
     },
   ],
   series: [
     {
-      name: "Line 1",
+      name: "",
       type: "line",
       stack: "Total",
       smooth: true,
       lineStyle: {
-        width: 0,
+        width: 1, // Set the width of the line
+        type: "solid", // Set the type of the line (solid, dashed, dotted, etc.)
+        color: "orange", // Set the color of the line
       },
       showSymbol: false,
+      silent: true, // Disable interactions for this series
       areaStyle: {
-        opacity: 0.8,
-        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-          {
-            offset: 0,
-            color: "rgb(128, 255, 165)",
-          },
-          {
-            offset: 1,
-            color: "rgb(1, 191, 236)",
-          },
-        ]),
+        color: {
+          type: "linear",
+          x: 0,
+          y: 0,
+          x2: 0,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: "rgba(255, 165, 0, 1)", // Orange (fully opaque)
+            },
+            {
+              offset: 0.7,
+              color: "rgba(255, 165, 0, 0.3)", // Semi-transparent
+            },
+            {
+              offset: 1,
+              color: "rgba(255, 165, 0, 0)", // Fully transparent
+            },
+          ],
+        },
       },
       emphasis: {
         focus: "series",
       },
-      data: [142, 143, 101, 264, 90, 340, 250],
+      data: props.chartData,
     },
   ],
 };
@@ -110,5 +142,3 @@ onMounted(() => {
   }
 });
 </script>
-
-<style></style>

@@ -8,6 +8,7 @@ declare module '@vue/runtime-core' {
     CryptoCurrency_Card: typeof import('./src/components/CryptoCurrency_Card.vue')['default']
     Echart: typeof import('./src/components/echart.vue')['default']
     Icon: typeof import('./src/components/Icon.vue')['default']
+    MarketCap: typeof import('./src/components/MarketCap.vue')['default']
     PreLoader: typeof import('./src/components/PreLoader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

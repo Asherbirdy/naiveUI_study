@@ -1,7 +1,7 @@
 <template>
   <div
     style="
-      height: 108px;
+      height: 120px;
       background-color: white;
       border: 1px solid #dfe5f9;
       border-radius: 5px;
@@ -15,7 +15,7 @@
           <n-p strong style="font-weight: bold"
             >{{ props.cryptoData.codeName }}
             <br />
-            <div style="color: grey">
+            <div style="color: grey; font-weight: 100">
               {{ props.cryptoData.cryptoName }}
             </div></n-p
           >
@@ -27,13 +27,22 @@
           {{ props.cryptoData.currency }}
           {{ props.cryptoData.price }}
           <br />
-          {{ props.cryptoData.percent }}
+          <div
+            :style="{ color: props.cryptoData.percent >= 0 ? 'green' : 'red' }"
+          >
+            {{ props.cryptoData.percent }}%
+          </div>
         </n-p>
       </n-space>
     </n-space>
+    <Echart
+      style="margin: 0 auto; width: 100%"
+      :chartData="props.cryptoData.chartData"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+import { onMounted } from "vue";
 const props = defineProps(["cryptoData"]);
 </script>
