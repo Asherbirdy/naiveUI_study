@@ -57,24 +57,40 @@ console.log(crypto);
 </script>
 
 <template>
-  <n-breadcrumb separator=">">
-    <n-breadcrumb-item>
-      <n-icon>
-        <md-cash />
-      </n-icon>
-      Home
-    </n-breadcrumb-item>
-    <n-breadcrumb-item>
-      <n-icon><md-cash /> </n-icon>
-      Account
-    </n-breadcrumb-item>
-    <n-breadcrumb-item>
-      <n-icon> <md-cash /> </n-icon>
-      Category
-    </n-breadcrumb-item>
-  </n-breadcrumb>
-
   <!-- 虛擬貨幣字卡 -->
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      gap: 4px;
+    "
+  >
+    <div>
+      <!-- 麵包 -->
+      <n-breadcrumb separator=">">
+        <n-breadcrumb-item>
+          <n-icon>
+            <md-cash />
+          </n-icon>
+          Home
+        </n-breadcrumb-item>
+        <n-breadcrumb-item>
+          <n-icon><md-cash /> </n-icon>
+          Account
+        </n-breadcrumb-item>
+        <n-breadcrumb-item>
+          <n-icon> <md-cash /> </n-icon>
+          Category
+        </n-breadcrumb-item>
+      </n-breadcrumb>
+    </div>
+    <!-- 加密貨幣 字卡按鈕-->
+    <n-space>
+      <n-button @click="">&lt;</n-button>
+      <n-button @click="">&gt;</n-button></n-space
+    >
+  </div>
   <n-row gutter="12">
     <n-col :span="6" v-for="(item, index) in crypto" :key="index">
       <CryptoCurrency_Card :cryptoData="item" />

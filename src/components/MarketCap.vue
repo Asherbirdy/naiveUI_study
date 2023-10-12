@@ -18,8 +18,8 @@ const columns = [
     render: (row: any) => {
       return h("div", { style: { display: "flex", alignItems: "center" } }, [
         h("img", {
-          src: row.imageSrc, // Assuming you have an 'imageSrc' property in your data
-          style: { marginRight: "10px" }, // Adjust margin as needed
+          src: row.imageSrc,
+          style: { marginRight: "10px" },
         }),
         row.name,
       ]);

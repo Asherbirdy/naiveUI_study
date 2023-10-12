@@ -27,10 +27,14 @@
           {{ props.cryptoData.currency }}
           {{ props.cryptoData.price }}
           <br />
-          <div
-            :style="{ color: props.cryptoData.percent >= 0 ? 'green' : 'red' }"
-          >
+          <div :style="{ color: isPercentOverZero ? 'green' : 'red' }">
             {{ props.cryptoData.percent }}%
+            <n-icon size="15" v-if="isPercentOverZero">
+              <ArrowUpOutline />
+            </n-icon>
+            <n-icon size="15" v-else>
+              <ArrowDownOutline />
+            </n-icon>
           </div>
         </n-p>
       </n-space>
@@ -43,6 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { ArrowUpOutline, ArrowDownOutline } from "@vicons/ionicons5";
 const props = defineProps(["cryptoData"]);
+const isPercentOverZero = props.cryptoData.percent >= 0;
 </script>
