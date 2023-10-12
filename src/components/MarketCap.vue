@@ -1,54 +1,66 @@
 <template>
   <n-data-table :columns="columns" :data="data" :row-props="rowProps" />
 </template>
+<script setup lang="ts">
+import { ref, h } from "vue";
 
-<script lang="ts">
-import { defineComponent } from "vue";
+const rowProps = (row: any) => {
+  return {
+    style: "cursor: pointer;",
+    onClick: () => {},
+  };
+};
 
-export default defineComponent({
-  setup() {
-    return {
-      rowProps: (row: RowData) => {
-        return {
-          style: "cursor: pointer;",
-          onClick: () => {},
-        };
-      },
-      columns: [
-        {
-          title: "Name",
-          key: "name",
-        },
-        {
-          title: "Age",
-          key: "age",
-        },
-        {
-          title: "Address",
-          key: "address",
-        },
-      ],
-      data: [
-        {
-          key: 0,
-          name: "07akioni",
-          age: "18",
-          address: "Yiheyuan Road",
-        },
-        {
-          key: 1,
-          name: "08akioni",
-          age: "14",
-          address: "Pingshan Road",
-        },
-        {
-          key: 2,
-          name: "09akioni",
-          age: "22",
-          address: "Haidian Bridge",
-        },
-      ],
-    };
+const columns = [
+  {
+    title: "Market Cap",
+    key: "name",
+    render: (row: any) => {
+      return h("div", { style: { display: "flex", alignItems: "center" } }, [
+        h("img", {
+          src: row.imageSrc, // Assuming you have an 'imageSrc' property in your data
+          style: { marginRight: "10px" }, // Adjust margin as needed
+        }),
+        row.name,
+      ]);
+    },
   },
-});
+  {
+    key: "price",
+  },
+  {
+    key: "percent",
+  },
+];
+
+const data = ref([
+  {
+    key: 0,
+    name: "BTC",
+    price: 2000,
+    percent: 10,
+    imageSrc: "../src/assets/img/crypto_img/btc.png",
+  },
+  {
+    key: 0,
+    name: "BTC",
+    price: 2000,
+    percent: -10,
+    imageSrc: "../src/assets/img/crypto_img/btc.png",
+  },
+  {
+    key: 0,
+    name: "BTC",
+    price: 2000,
+    percent: 10,
+    imageSrc: "../src/assets/img/crypto_img/btc.png",
+  },
+  {
+    key: 0,
+    name: "BTC",
+    price: 2000,
+    percent: 0,
+    imageSrc: "../src/assets/img/crypto_img/btc.png",
+  },
+]);
 </script>

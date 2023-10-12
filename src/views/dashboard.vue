@@ -85,8 +85,7 @@ console.log(crypto);
     <n-layout-content content-style="padding: 24px;">
       Pingshan Road
     </n-layout-content>
-    <n-layout-sider content-style="padding: 24px;">
-      Handian Bridge
+    <n-layout-sider :width="400" content-style="padding: 24px;">
       <MarketCap />
     </n-layout-sider>
   </n-layout>
