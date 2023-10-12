@@ -6,6 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     CryptoCurrency_Card: typeof import('./src/components/CryptoCurrency_Card.vue')['default']
+    Echart: typeof import('./src/components/echart.vue')['default']
     Icon: typeof import('./src/components/Icon.vue')['default']
     PreLoader: typeof import('./src/components/PreLoader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

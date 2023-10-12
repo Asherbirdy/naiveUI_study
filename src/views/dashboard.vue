@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import type { Ref } from "vue";
 import CryptoCurrency_Card from "../components/CryptoCurrency_Card.vue";
+import Echart from "../components/echart.vue";
 
 interface Crypto {
   cryptoName: String;
@@ -73,7 +74,7 @@ console.log(crypto);
       <CryptoCurrency_Card :cryptoData="item" />
     </n-col>
   </n-row>
-
+  <Echart />
   <!-- 其他段： -->
   <!-- <n-row gutter="12">
     <n-col :span="16">
