@@ -1,20 +1,39 @@
 <template>
-  <div>
-    <n-card class="green" title="tile" wrap="false" style="width: 100%">
-      {{ props.cryptoData }}
-    </n-card>
+  <div
+    style="
+      height: 108px;
+      background-color: white;
+      border: 1px solid #dfe5f9;
+      border-radius: 5px;
+      padding: 5px 8px;
+    "
+  >
+    <n-space justify="space-between">
+      <n-space align="center">
+        <n-image width="20" :src="props.cryptoData.imageURL" />
+        <n-space vertical>
+          <n-p strong style="font-weight: bold"
+            >{{ props.cryptoData.codeName }}
+            <br />
+            <div style="color: grey">
+              {{ props.cryptoData.cryptoName }}
+            </div></n-p
+          >
+        </n-space>
+      </n-space>
+
+      <n-space vertical>
+        <n-p>
+          {{ props.cryptoData.currency }}
+          {{ props.cryptoData.price }}
+          <br />
+          {{ props.cryptoData.percent }}
+        </n-p>
+      </n-space>
+    </n-space>
   </div>
 </template>
+
 <script setup lang="ts">
 const props = defineProps(["cryptoData"]);
 </script>
-<style scoped>
-.light-green {
-  height: 108px;
-  background-color: rgba(0, 128, 0, 0.12);
-}
-.green {
-  height: 108px;
-  background-color: rgba(0, 128, 0, 0.24);
-}
-</style>

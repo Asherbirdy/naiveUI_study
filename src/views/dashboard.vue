@@ -18,7 +18,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     codeName: "BTC",
     price: 721882,
     currency: "$",
-    imageURL: "",
+    imageURL: "../src/assets/img/crypto_img/btc.png",
     percent: -1.23,
   },
   {
@@ -26,7 +26,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     codeName: "ETH",
     price: 3000,
     currency: "$",
-    imageURL: "",
+    imageURL: "../src/assets/img/crypto_img/eth.png",
     percent: 2.45,
   },
   {
@@ -34,7 +34,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     codeName: "XEM",
     price: 3000,
     currency: "$",
-    imageURL: "",
+    imageURL: "../src/assets/img/crypto_img/xem.png",
     percent: 2.45,
   },
   {
@@ -42,8 +42,8 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     codeName: "Ripple",
     price: 3000,
     currency: "$",
-    imageURL: "",
-    percent: 2.45,
+    imageURL: "../src/assets/img/crypto_img/xrp.png",
+    percent: -22.45,
   },
 ]);
 
@@ -98,5 +98,10 @@ console.log(crypto);
 .green {
   height: 108px;
   background-color: rgba(0, 128, 0, 0.24);
+}
+
+.n-card > .n-card__content:first-child,
+.n-card > .n-card__footer:first-child {
+  padding-top: var(--n-padding-bottom);
 }
 </style>
