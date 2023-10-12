@@ -181,7 +181,7 @@ const menuOptions3: MenuOption[] = [
 ];
 </script>
 
-<style>
+<style >
 .n-menu-item-content-header p {
   color: white;
 }

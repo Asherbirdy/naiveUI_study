@@ -1,12 +1,14 @@
 
-import { createRouter, createWebHistory, START_LOCATION } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
+
+
 
 
 const routes = [
   {
     path: "/",
     name: "home",
-    component: () => import("/src/views/dashboard.vue"),
+    component: () => import("../views/dashboard.vue"),
 
   },
 

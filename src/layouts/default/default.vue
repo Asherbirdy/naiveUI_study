@@ -10,14 +10,11 @@
       >
         <Sidebar />
       </n-layout-sider>
-      <n-layout content-style="padding: 24px;" :native-scrollbar="false">
-        <n-layout-header style="height: 64px; padding: 24px" bordered>
-          Yiheyuan Road
+      <n-layout content-style="padding: 0px;" :native-scrollbar="false">
+        <n-layout-header style="padding: 10px" bordered>
+          <Header />
         </n-layout-header>
         <Content />
-        <n-h2>Pingshan Road</n-h2>
-        <n-h2>Pingshan Road</n-h2>
-        <n-h2>Pingshan Road</n-h2>
       </n-layout>
     </n-layout>
   </n-layout>
@@ -26,6 +23,7 @@
 <script setup>
 import Sidebar from "./Sidebar.vue";
 import Content from "./Content.vue";
+import Header from "./Header.vue";
 </script>
 
 <style scoped>
