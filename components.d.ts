@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
     Echart: typeof import('./src/components/echart.vue')['default']
     Icon: typeof import('./src/components/Icon.vue')['default']
     MarketCap: typeof import('./src/components/MarketCap.vue')['default']
+    Percent: typeof import('./src/components/Percent.vue')['default']
     PreLoader: typeof import('./src/components/PreLoader.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

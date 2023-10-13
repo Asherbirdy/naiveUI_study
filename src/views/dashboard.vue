@@ -21,7 +21,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     codeName: "BTC",
     price: 721882,
     currency: "$",
-    imageURL: "../src/assets/img/crypto_img/btc.png",
+    imageURL: "../src/assets/svg/BTC.svg",
     percent: -1.23,
     chartData: [142, 143, 101, 264, 90, 340, 250],
     color: [255, 165, 0],
@@ -31,7 +31,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     codeName: "ETH",
     price: 3000,
     currency: "$",
-    imageURL: "../src/assets/img/crypto_img/eth.png",
+    imageURL: "../src/assets/svg/ETH.svg",
     percent: 2.45,
     chartData: [10, 20, 31, 40, 90, 20, 40],
     color: [0, 0, 255],
@@ -42,7 +42,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     codeName: "XEM",
     price: 3000,
     currency: "$",
-    imageURL: "../src/assets/img/crypto_img/xem.png",
+    imageURL: "../src/assets/svg/XEM.svg",
     percent: 2.45,
     chartData: [400, 143, 200, 264, 320, 340, 250],
     color: [60, 180, 113],
@@ -52,7 +52,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     codeName: "Ripple",
     price: 3000,
     currency: "$",
-    imageURL: "../src/assets/img/crypto_img/xrp.png",
+    imageURL: "../src/assets/svg/XRP.svg",
     percent: -22.45,
     chartData: [2, 143, 101, 264, 90, 340, 40],
     color: [106, 90, 205],
@@ -93,12 +93,15 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
       <n-button @click="">&gt;</n-button></n-space
     >
   </div>
+
+  <!-- 字卡區 -->
   <n-row gutter="12" style="margin-bottom: 20px">
     <n-col :span="6" v-for="(item, index) in crypto" :key="index">
       <CryptoCurrency_Card :cryptoData="item" />
     </n-col>
   </n-row>
 
+  <!-- 左Ｋ線 右價格 -->
   <n-layout has-sider>
     <n-layout-content content-style="padding: 24px;">
       Pingshan Road

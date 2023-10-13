@@ -16,20 +16,44 @@ const columns = [
     title: "Market Cap",
     key: "name",
     render: (row: any) => {
-      return h("div", { style: { display: "flex", alignItems: "center" } }, [
-        h("img", {
-          src: row.imageSrc,
-          style: { marginRight: "10px" },
-        }),
-        row.name,
-      ]);
+      return h(
+        "div",
+        { style: { display: "flex", alignItems: "center", width: "80px" } },
+        [
+          h("img", {
+            src: row.imageSrc,
+            style: { width: "20%", marginRight: "5px" },
+          }),
+          row.name,
+        ]
+      );
     },
   },
   {
     key: "price",
+    render: (row: any) => {
+      return h(
+        "div",
+        { style: { display: "flex", alignItems: "center", gap: "10px" } },
+        [row.price, "$"]
+      );
+    },
   },
   {
     key: "percent",
+    render: (row: any) => {
+      return h(
+        "div",
+        {
+          style: {
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+          },
+        },
+        [row.percent + "%"]
+      );
+    },
   },
 ];
 
@@ -39,25 +63,25 @@ const data = ref([
     name: "BTC",
     price: 2000,
     percent: 10,
-    imageSrc: "../src/assets/img/crypto_img/btc.png",
+    imageSrc: "../src/assets/svg/BTC.svg",
   },
   {
-    key: 0,
-    name: "BTC",
+    key: 1,
+    name: "BCH",
     price: 2000,
     percent: -10,
-    imageSrc: "../src/assets/img/crypto_img/btc.png",
+    imageSrc: "../src/assets/svg/BCH.svg",
   },
   {
-    key: 0,
-    name: "BTC",
+    key: 2,
+    name: "ETH",
     price: 2000,
     percent: 10,
     imageSrc: "../src/assets/img/crypto_img/btc.png",
   },
   {
-    key: 0,
-    name: "BTC",
+    key: 3,
+    name: "LTC",
     price: 2000,
     percent: 0,
     imageSrc: "../src/assets/img/crypto_img/btc.png",
