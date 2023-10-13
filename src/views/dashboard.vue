@@ -52,8 +52,6 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     chartData: [2, 143, 101, 264, 90, 340, 40],
   },
 ]);
-
-console.log(crypto);
 </script>
 
 <template>
@@ -70,17 +68,15 @@ console.log(crypto);
       <!-- 麵包 -->
       <n-breadcrumb separator=">">
         <n-breadcrumb-item>
-          <n-icon>
-            <md-cash />
-          </n-icon>
+          <n-icon> </n-icon>
           Home
         </n-breadcrumb-item>
         <n-breadcrumb-item>
-          <n-icon><md-cash /> </n-icon>
+          <n-icon> </n-icon>
           Account
         </n-breadcrumb-item>
         <n-breadcrumb-item>
-          <n-icon> <md-cash /> </n-icon>
+          <n-icon> </n-icon>
           Category
         </n-breadcrumb-item>
       </n-breadcrumb>

@@ -24,7 +24,7 @@
       Service
     </n-gradient-text>
   </n-h3>
-  <n-menu :options="menuOptions2" accordion />
+
   <n-h3 style="text-align: center">
     <n-gradient-text
       :gradient="{
@@ -35,7 +35,6 @@
       Quick Access
     </n-gradient-text>
   </n-h3>
-  <n-menu :options="menuOptions3" accordion />
 </template>
 
 <script lang="ts" setup>
@@ -54,6 +53,7 @@ function renderIcon(icon: any, color: string) {
 
 const menuOptions: MenuOption[] = [
   {
+    key: 0,
     label: () =>
       h(
         "p",
@@ -65,118 +65,6 @@ const menuOptions: MenuOption[] = [
         }
       ),
     icon: renderIcon(FishIcon, "white"),
-  },
-];
-
-const menuOptions2: MenuOption[] = [
-  {
-    label: () =>
-      h("p", { style: { color: "white" } }, { default: () => "Transactions" }),
-    icon: renderIcon(FishIcon, "white"),
-    children: [
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-    ],
-  },
-];
-
-const menuOptions3: MenuOption[] = [
-  {
-    label: () =>
-      h("p", { style: { color: "white" } }, { default: () => "Transactions" }),
-    icon: renderIcon(FishIcon, "white"),
-    children: [
-      {
-        label: () =>
-          h("p", { style: {} }, { default: () => "Buy & Sell Coin" }),
-      },
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-      {
-        label: () =>
-          h(
-            "p",
-            { style: { color: "white" } },
-            { default: () => "Buy & Sell Coin" }
-          ),
-      },
-    ],
   },
 ];
 </script>

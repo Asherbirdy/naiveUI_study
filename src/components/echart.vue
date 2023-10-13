@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <div ref="main" style="width: 250px; height: 80px"></div>
-  </div>
+  <div ref="main" class="chart-container"></div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watch } from "vue";
 import * as echarts from "echarts/core";
 import {
   TitleComponent,
@@ -117,8 +115,8 @@ const option = {
               color: "rgba(255, 165, 0, 1)", // Orange (fully opaque)
             },
             {
-              offset: 0.7,
-              color: "rgba(255, 165, 0, 0.3)", // Semi-transparent
+              offset: 0.2,
+              color: "rgba(255, 165, 0, 0.7)", // Semi-transparent
             },
             {
               offset: 1,
@@ -135,10 +133,83 @@ const option = {
   ],
 };
 
+const handleWindowResize = () => {
+  if (myChart.value) {
+    // 销毁旧的 ECharts 实例
+    myChart.value.dispose();
+
+    // 创建新的 ECharts 实例
+    myChart.value = echarts.init(main.value);
+
+    // 设置动画效果
+    const newOption = {
+      ...option,
+      animation: true,
+      animationDuration: 1000, // 设置动画持续时间（1秒）
+    };
+
+    myChart.value.setOption(newOption);
+  }
+};
+
+// 监听视图数据变化
+watch(
+  () => props.chartData,
+  () => {
+    // 更新图表数据
+    if (myChart.value) {
+      myChart.value.setOption({
+        series: [
+          {
+            data: props.chartData,
+          },
+        ],
+      });
+    }
+  }
+);
+
 onMounted(() => {
   if (main.value) {
+    // 创建初始的 ECharts 实例
     myChart.value = echarts.init(main.value);
     myChart.value.setOption(option);
   }
+
+  // 使用 debounce 确保在一秒钟内只调用一次 handleWindowResize
+  const handleResize = debounce(handleWindowResize, 100);
+
+  // 监听窗口大小变化事件
+  window.addEventListener("resize", handleResize);
 });
+
+function debounce<T extends (...args: any[]) => void>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
+  let timeout: ReturnType<typeof setTimeout>;
+
+  const result = function (
+    this: ThisParameterType<T>,
+    ...args: Parameters<T>
+  ): void {
+    const context = this;
+    const later = function () {
+      func.apply(context, args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+
+  return result;
+}
 </script>
+
+<style scoped>
+.chart-container {
+  width: 100%; /* 设置宽度为100% */
+  max-width: 100%; /* 设置最大宽度为100% */
+  height: 80px;
+}
+</style>
