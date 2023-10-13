@@ -93,7 +93,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
       <n-button @click="">&gt;</n-button></n-space
     >
   </div>
-  <n-row gutter="12">
+  <n-row gutter="12" style="margin-bottom: 20px">
     <n-col :span="6" v-for="(item, index) in crypto" :key="index">
       <CryptoCurrency_Card :cryptoData="item" />
     </n-col>
