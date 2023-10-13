@@ -1,11 +1,36 @@
 <script lang="ts" setup>
 import { ref } from "vue";
+import type { Ref } from "vue";
 import CryptoCurrency_Card from "@/components/CryptoCurrency_Card.vue";
 import MarketCap from "@/components/MarketCap.vue";
 import { useCryptoStore } from "@/stores/crypto";
 
 const { cryptoData } = useCryptoStore();
-const crypto = ref(cryptoData);
+
+const sliceParamterOne = ref(0);
+const sliceParamterTwo = ref(4);
+
+const sliceCryptoData = () => {
+  return cryptoData.slice(sliceParamterOne.value, sliceParamterTwo.value);
+};
+
+const onlyFourCrypto = ref(sliceCryptoData());
+
+function switchCard_add() {
+  sliceParamterOne.value += 1;
+  sliceParamterTwo.value += 1;
+  onlyFourCrypto.value = sliceCryptoData();
+  crypto.value = onlyFourCrypto.value;
+}
+
+function switchCard_minus() {
+  sliceParamterOne.value -= 1;
+  sliceParamterTwo.value -= 1;
+  onlyFourCrypto.value = sliceCryptoData();
+  crypto.value = onlyFourCrypto.value;
+}
+
+const crypto = ref(onlyFourCrypto);
 </script>
 
 <template>
@@ -37,8 +62,8 @@ const crypto = ref(cryptoData);
     </div>
     <!-- 加密貨幣 字卡按鈕-->
     <n-space>
-      <n-button @click="">&lt;</n-button>
-      <n-button @click="">&gt;</n-button></n-space
+      <n-button @click="switchCard_minus">&lt;</n-button>
+      <n-button @click="switchCard_add">&gt;</n-button></n-space
     >
   </div>
 
