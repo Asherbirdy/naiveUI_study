@@ -16,7 +16,7 @@ import { LineChart } from "echarts/charts";
 import { UniversalTransition } from "echarts/features";
 import { CanvasRenderer } from "echarts/renderers";
 
-const props = defineProps(["chartData"]);
+const props = defineProps(["chartData", "chartColor"]);
 
 echarts.use([
   TitleComponent,
@@ -31,6 +31,8 @@ echarts.use([
 
 const main = ref<HTMLElement | null>(null);
 const myChart = ref<echarts.ECharts | null>(null);
+
+const color = ref([255, 165, 0]);
 
 const option = {
   color: ["#80FFA5", "#00DDFF", "#37A2FF", "#FF0087", "#FFBF00"],
@@ -98,7 +100,7 @@ const option = {
       lineStyle: {
         width: 1, // Set the width of the line
         type: "solid", // Set the type of the line (solid, dashed, dotted, etc.)
-        color: "orange", // Set the color of the line
+        color: `rgba(${props.chartColor[0]}, ${props.chartColor[1]}, ${props.chartColor[2]}, 1)`, // Set the color of the line
       },
       showSymbol: false,
       silent: true, // Disable interactions for this series
@@ -112,15 +114,15 @@ const option = {
           colorStops: [
             {
               offset: 0,
-              color: "rgba(255, 165, 0, 1)", // Orange (fully opaque)
+              color: `rgba(${props.chartColor[0]}, ${props.chartColor[1]}, ${props.chartColor[2]}, 1)`, // Orange (fully opaque)
             },
             {
               offset: 0.2,
-              color: "rgba(255, 165, 0, 0.7)", // Semi-transparent
+              color: `rgba(${props.chartColor[0]}, ${props.chartColor[1]}, ${props.chartColor[2]}, 0.7)`, // Semi-transparent
             },
             {
               offset: 1,
-              color: "rgba(255, 165, 0, 0)", // Fully transparent
+              color: `rgba(${props.chartColor[0]}, ${props.chartColor[1]}, ${props.chartColor[2]}, 0)`, // Fully transparent
             },
           ],
         },
@@ -170,6 +172,7 @@ watch(
 );
 
 onMounted(() => {
+  color.value = props.chartColor;
   if (main.value) {
     // 创建初始的 ECharts 实例
     myChart.value = echarts.init(main.value);

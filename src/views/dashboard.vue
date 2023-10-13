@@ -12,6 +12,7 @@ interface Crypto {
   imageURL: String;
   percent: Number;
   chartData: Number[];
+  color: Number[];
 }
 
 const crypto: Ref<Crypto[]> = ref<Crypto[]>([
@@ -23,6 +24,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     imageURL: "../src/assets/img/crypto_img/btc.png",
     percent: -1.23,
     chartData: [142, 143, 101, 264, 90, 340, 250],
+    color: [255, 165, 0],
   },
   {
     cryptoName: "Ethereum",
@@ -32,7 +34,9 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     imageURL: "../src/assets/img/crypto_img/eth.png",
     percent: 2.45,
     chartData: [10, 20, 31, 40, 90, 20, 40],
+    color: [0, 0, 255],
   },
+
   {
     cryptoName: "NEM",
     codeName: "XEM",
@@ -41,6 +45,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     imageURL: "../src/assets/img/crypto_img/xem.png",
     percent: 2.45,
     chartData: [400, 143, 200, 264, 320, 340, 250],
+    color: [60, 180, 113],
   },
   {
     cryptoName: "XRP",
@@ -50,6 +55,7 @@ const crypto: Ref<Crypto[]> = ref<Crypto[]>([
     imageURL: "../src/assets/img/crypto_img/xrp.png",
     percent: -22.45,
     chartData: [2, 143, 101, 264, 90, 340, 40],
+    color: [106, 90, 205],
   },
 ]);
 </script>

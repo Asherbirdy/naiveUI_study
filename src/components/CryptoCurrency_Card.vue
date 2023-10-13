@@ -15,7 +15,7 @@
           <n-p strong style="font-weight: bold"
             >{{ props.cryptoData.codeName }}
             <br />
-            <div style="color: grey; font-weight: 100">
+            <div style="color: rgb(190, 190, 190); font-weight: 100">
               {{ props.cryptoData.cryptoName }}
             </div></n-p
           >
@@ -42,6 +42,7 @@
     <Echart
       style="margin: 0 auto; width: 100%"
       :chartData="props.cryptoData.chartData"
+      :chartColor="props.cryptoData.color"
     />
   </div>
 </template>
