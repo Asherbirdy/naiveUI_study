@@ -3,7 +3,7 @@
 </template>
 <script setup lang="ts">
 import { ref, h } from "vue";
-
+import Percent from "../components/Percent.vue";
 const rowProps = (row: any) => {
   return {
     style: "cursor: pointer;",
@@ -42,17 +42,9 @@ const columns = [
   {
     key: "percent",
     render: (row: any) => {
-      return h(
-        "div",
-        {
-          style: {
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-          },
-        },
-        [row.percent + "%"]
-      );
+      return h(Percent, {
+        percent: row.percent,
+      });
     },
   },
 ];

@@ -27,25 +27,6 @@
           {{ props.cryptoData.currency }}
           {{ props.cryptoData.price }}
           <br />
-
-          <!-- <div
-            :style="{
-              color: isPercentOverZero ? 'green' : 'red',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '4px',
-            }"
-          >
-            {{ props.cryptoData.percent }}%
-
-            <n-icon size="15" v-if="isPercentOverZero">
-              <ArrowUpOutline />
-            </n-icon>
-            <n-icon size="15" v-else>
-              <ArrowDownOutline />
-            </n-icon>
-          </div> -->
           <Percent :percent="props.cryptoData.percent" />
         </n-p>
       </n-space>

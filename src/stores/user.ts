@@ -7,36 +7,35 @@ export const useUserStore = defineStore("userStore", () => {
   const token = useStorage("token", null);
   const isLoggedIn = computed(
     () => token.value !== undefined && token.value !== "" && token.value != null
-  )
-  const isLoading = ref(false)
-  const isDark = usePreferredDark()
+  );
+  const isLoading = ref(false);
+  const isDark = usePreferredDark();
   const sidebarCollapsed = useStorage("sidebarCollapsed", false);
-  
 
   const toggleSidebarCollapsed = async () => {
-    sidebarCollapsed.value = !sidebarCollapsed.value
+    sidebarCollapsed.value = !sidebarCollapsed.value;
   };
   const setLanguage = async (lang: string) => {
-    localStorage.setItem("language", lang)
-    user.value.language = lang
-  }
+    localStorage.setItem("language", lang);
+    user.value.language = lang;
+  };
 
   const setLoggedIn = async (data: any) => {
     token.value = data.access_token;
-    user.value = data.user
-  }
+    user.value = data.user;
+  };
   const setUser = async (userData: any) => {
-    user.value = userData
-  }
+    user.value = userData;
+  };
   const setIsDark = async (value: boolean) => {
-    isDark.value = value
+    isDark.value = value;
   };
   const setIsLoading = async (value: boolean) => {
-    isLoading.value = value
+    isLoading.value = value;
   };
   const logoutUser = async () => {
-    user.value = undefined
-    token.value = undefined
+    user.value = undefined;
+    token.value = undefined;
   };
 
   return {
@@ -53,7 +52,7 @@ export const useUserStore = defineStore("userStore", () => {
     token,
     user,
   } as const;
-})
+});
 
 /**
  * Pinia supports Hot Module replacement so you can edit your stores and
@@ -63,5 +62,5 @@ export const useUserStore = defineStore("userStore", () => {
  * @see https://vitejs.dev/guide/api-hmr.html
  */
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot));
 }

@@ -1,13 +1,14 @@
 <template>
   <div
     :style="{
-      color: isPercentOverZero ? 'green' : 'red',
+      color: isPercentOverZero ? '#01C0AA' : 'red',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      gap: '4px',
+      gap: '2px',
     }"
   >
+    <div v-show="isPercentOverZero">+</div>
     {{ props.percent }}%
 
     <n-icon size="15" v-if="isPercentOverZero">
@@ -21,8 +22,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { ArrowUpOutline, ArrowDownOutline } from "@vicons/ionicons5";
-const number = ref(100);
-
 const props = defineProps(["percent"]);
 const isPercentOverZero = props.percent >= 0;
 </script>
