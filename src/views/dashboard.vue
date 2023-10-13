@@ -82,10 +82,10 @@ const crypto = ref(onlyFourCrypto);
 
   <!-- 左Ｋ線 右價格 -->
   <n-layout has-sider>
-    <n-layout-content content-style="padding: 24px;">
+    <n-layout-content content-style="padding: 0 14px;">
       Pingshan Road
     </n-layout-content>
-    <n-layout-sider :width="400" content-style="padding: 24px;">
+    <n-layout-sider :width="400" content-style="padding: 0 14px;">
       <MarketCap />
     </n-layout-sider>
   </n-layout>
@@ -108,12 +108,10 @@ const crypto = ref(onlyFourCrypto);
 
 .n-layout-header,
 .n-layout-footer {
-  background: rgba(128, 128, 128, 0.2);
   padding: 24px;
 }
 
 .n-layout-sider {
-  background: rgba(128, 128, 128, 0.3);
 }
 
 .n-layout-content {
