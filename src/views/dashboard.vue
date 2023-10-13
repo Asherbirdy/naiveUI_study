@@ -62,8 +62,14 @@ const crypto = ref(onlyFourCrypto);
     </div>
     <!-- 加密貨幣 字卡按鈕-->
     <n-space>
-      <n-button @click="switchCard_minus">&lt;</n-button>
-      <n-button @click="switchCard_add">&gt;</n-button></n-space
+      <n-button @click="switchCard_minus" :disabled="sliceParamterOne === 0"
+        >&lt;</n-button
+      >
+      <n-button
+        @click="switchCard_add"
+        :disabled="sliceParamterTwo === cryptoData.length"
+        >&gt;</n-button
+      ></n-space
     >
   </div>
 
