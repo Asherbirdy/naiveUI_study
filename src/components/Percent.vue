@@ -11,12 +11,12 @@
     <div v-show="isPercentOverZero">+</div>
     {{ props.percent }}%
 
-    <n-icon size="15" :icon="arrowIcon" />
+    <n-icon size="15" :component="arrowIcon" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { computed } from "vue";
 import { ArrowUpOutline, ArrowDownOutline } from "@vicons/ionicons5";
 const props = defineProps(["percent"]);
 

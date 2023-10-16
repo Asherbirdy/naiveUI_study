@@ -3,6 +3,7 @@ import { ref } from "vue";
 import type { Ref } from "vue";
 import CryptoCurrency_Card from "@/components/CryptoCurrency_Card.vue";
 import MarketCap from "@/components/MarketCap.vue";
+import KLineChart from "@/components/KLineChart.vue";
 import { useCryptoStore } from "@/stores/crypto";
 
 const { cryptoData } = useCryptoStore();
@@ -83,7 +84,7 @@ const crypto = ref(onlyFourCrypto);
   <!-- 左Ｋ線 右價格 -->
   <n-layout has-sider>
     <n-layout-content content-style="padding: 0 14px;">
-      Pingshan Road
+      <KLineChart />
     </n-layout-content>
     <n-layout-sider :width="400" content-style="padding: 0 14px;">
       <MarketCap />
@@ -109,12 +110,5 @@ const crypto = ref(onlyFourCrypto);
 .n-layout-header,
 .n-layout-footer {
   padding: 24px;
-}
-
-.n-layout-sider {
-}
-
-.n-layout-content {
-  background: rgba(128, 128, 128, 0.4);
 }
 </style>
