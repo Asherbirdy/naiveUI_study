@@ -36,70 +36,85 @@ const crypto = ref(onlyFourCrypto);
 
 <template>
   <!-- 虛擬貨幣字卡 -->
-  <div
-    style="
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 7px;
-      gap: 4px;
-    "
-  >
-    <div>
-      <!-- 麵包 -->
-      <n-breadcrumb separator=">">
-        <n-breadcrumb-item>
-          <n-icon> </n-icon>
-          Home
-        </n-breadcrumb-item>
-        <n-breadcrumb-item>
-          <n-icon> </n-icon>
-          Account
-        </n-breadcrumb-item>
-        <n-breadcrumb-item>
-          <n-icon> </n-icon>
-          Category
-        </n-breadcrumb-item>
-      </n-breadcrumb>
-    </div>
-    <!-- 加密貨幣 字卡按鈕-->
-    <n-space>
-      <n-button @click="switchCard_minus" :disabled="sliceParamterOne === 0"
-        >&lt;</n-button
-      >
-      <n-button
-        @click="switchCard_add"
-        :disabled="sliceParamterTwo === cryptoData.length"
-        >&gt;</n-button
-      ></n-space
+  <div>
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 7px;
+        gap: 4px;
+      "
     >
+      <div>
+        <!-- 麵包 -->
+        <n-breadcrumb separator=">">
+          <n-breadcrumb-item>
+            <n-icon> </n-icon>
+            Home
+          </n-breadcrumb-item>
+          <n-breadcrumb-item>
+            <n-icon> </n-icon>
+            Account
+          </n-breadcrumb-item>
+          <n-breadcrumb-item>
+            <n-icon> </n-icon>
+            Category
+          </n-breadcrumb-item>
+        </n-breadcrumb>
+      </div>
+      <!-- 加密貨幣 字卡按鈕-->
+      <n-space>
+        <n-button @click="switchCard_minus" :disabled="sliceParamterOne === 0"
+          >&lt;</n-button
+        >
+        <n-button
+          @click="switchCard_add"
+          :disabled="sliceParamterTwo === cryptoData.length"
+          >&gt;</n-button
+        ></n-space
+      >
+    </div>
+
+    <!-- 字卡區 -->
+    <n-row gutter="12" style="margin-bottom: 20px">
+      <n-col :span="6" v-for="(item, index) in crypto" :key="index">
+        <CryptoCurrency_Card :cryptoData="item" />
+      </n-col>
+    </n-row>
+
+    <!-- 左Ｋ線 右價格 -->
+    <!-- <n-layout has-sider>
+      <n-layout-content content-style="padding: 0 14px;">
+        asdas
+        <KLineChart />
+      </n-layout-content>
+      <n-layout-sider :width="400" content-style="padding: 0 14px;">
+        <MarketCap />
+      </n-layout-sider>
+    </n-layout> -->
+
+    <n-row gutter="24">
+      <n-col :span="12">
+        <div class="light-green">
+          <KLineChart />
+        </div>
+      </n-col>
+      <n-col :span="12">
+        <div class="green">
+          <MarketCap />
+        </div>
+      </n-col>
+    </n-row>
   </div>
-
-  <!-- 字卡區 -->
-  <n-row gutter="12" style="margin-bottom: 20px">
-    <n-col :span="6" v-for="(item, index) in crypto" :key="index">
-      <CryptoCurrency_Card :cryptoData="item" />
-    </n-col>
-  </n-row>
-
-  <!-- 左Ｋ線 右價格 -->
-  <n-layout has-sider>
-    <n-layout-content content-style="padding: 0 14px;">
-      <KLineChart />
-    </n-layout-content>
-    <n-layout-sider :width="400" content-style="padding: 0 14px;">
-      <MarketCap />
-    </n-layout-sider>
-  </n-layout>
 </template>
 
 <style scoped>
 .light-green {
-  height: 108px;
-  background-color: rgba(0, 128, 0, 0.12);
+  width: 100%;
+  height: 300px;
 }
 .green {
-  height: 108px;
-  background-color: rgba(0, 128, 0, 0.24);
+  width: 100%;
 }
 
 .n-card > .n-card__content:first-child,
