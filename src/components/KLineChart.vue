@@ -1,9 +1,12 @@
 <template>
-  <div ref="main" style="width: 600px; height: 400px"></div>
+  <div
+    ref="main"
+    style="width: width: 100%;max-width: 100%; height: 100%;"
+  ></div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 import * as echarts from "echarts/core";
 import { GridComponent } from "echarts/components";
 import { CandlestickChart } from "echarts/charts";
@@ -56,8 +59,26 @@ const option = {
   ],
 };
 
+const handleWindowResize = () => {
+  if (myChart.value) {
+    // 销毁旧的 ECharts 实例
+    myChart.value.dispose();
+
+    // 创建新的 ECharts 实例
+    myChart.value = echarts.init(main.value);
+
+    // 设置动画效果
+    const newOption = {
+      ...option,
+      animation: true,
+      animationDuration: 1000, // 设置动画持续时间（1秒）
+    };
+
+    myChart.value.setOption(newOption);
+  }
+};
+
 onMounted(() => {
-  console.log("main value:", main.value);
   // Initialize the chart when the component is mounted
   if (main.value) {
     myChart.value = echarts.init(main.value);
@@ -65,7 +86,32 @@ onMounted(() => {
   } else {
     console.error("DOM element for the chart is invalid.");
   }
+  const handleResize = debounce(handleWindowResize, 100);
+
+  window.addEventListener("resize", handleResize);
 });
+
+function debounce<T extends (...args: any[]) => void>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
+  let timeout: ReturnType<typeof setTimeout>;
+
+  const result = function (
+    this: ThisParameterType<T>,
+    ...args: Parameters<T>
+  ): void {
+    const context = this;
+    const later = function () {
+      func.apply(context, args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+
+  return result;
+}
 </script>
 
 <style scoped>
