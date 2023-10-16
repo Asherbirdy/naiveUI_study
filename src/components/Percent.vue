@@ -10,7 +10,6 @@
   >
     <div v-show="isPercentOverZero">+</div>
     {{ props.percent }}%
-
     <n-icon size="15" :component="arrowIcon" />
   </div>
 </template>
