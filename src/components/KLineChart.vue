@@ -1,4 +1,22 @@
 <template>
+  <n-space justify="space-between" align="center">
+    <n-space align="start">
+      <n-p>BTC</n-p>/
+      <n-dropdown
+        placement="bottom-start"
+        trigger="click"
+        size="small"
+        :options="options"
+      >
+        <n-space style="cursor: pointer" align="center">
+          <n-text>JYP</n-text>
+          <n-icon :component="ChevronDownOutline" />
+        </n-space>
+      </n-dropdown>
+    </n-space>
+
+    <n-button type="info">BUY NOW</n-button>
+  </n-space>
   <div
     ref="main"
     style="width: width: 100%;max-width: 100%; height: 100%;"
@@ -11,9 +29,22 @@ import * as echarts from "echarts/core";
 import { GridComponent } from "echarts/components";
 import { CandlestickChart } from "echarts/charts";
 import { CanvasRenderer } from "echarts/renderers";
-
+import { ChevronDownOutline } from "@vicons/ionicons5";
 echarts.use([GridComponent, CandlestickChart, CanvasRenderer]);
-
+const options = [
+  {
+    label: "USD",
+    key: "USD",
+  },
+  {
+    label: "TWD",
+    key: "TWD",
+  },
+  {
+    label: "MVC",
+    key: "MVC",
+  },
+];
 const main = ref<HTMLElement | null>(null);
 const myChart = ref<echarts.ECharts | null>(null);
 const option = {
@@ -43,18 +74,22 @@ const option = {
         [20, 34, 10, 38],
         [40, 35, 30, 50],
         [31, 38, 33, 44],
+        [58, 30, 35, 12],
+        [40, 25, 33, 4],
+        [31, 15, 5, 42],
+        [58, 45, 5, 42],
+        [38, 15, 5, 12],
+        [38, 15, 5, 12],
+        [31, 1, 5, 42],
         [38, 15, 5, 42],
-        [38, 15, 5, 42],
-        [38, 15, 5, 42],
-        [38, 15, 5, 42],
-        [38, 15, 5, 42],
-        [38, 15, 5, 42],
-        [38, 15, 5, 42],
-        [38, 15, 5, 42],
-        [38, 15, 5, 42],
-        [38, 15, 5, 42],
-        [38, 15, 5, 42],
+        [20, 15, 5, 12],
+        [31, 38, 33, 44],
+        [38, 15, 5, 50],
       ],
+      itemStyle: {
+        color: "#8434CA",
+        color0: "#72C0DC",
+      },
     },
   ],
 };
@@ -110,6 +145,8 @@ function debounce<T extends (...args: any[]) => void>(
     timeout = setTimeout(later, wait);
   };
 
+
+  
   return result;
 }
 </script>
